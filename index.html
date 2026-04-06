@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -318,7 +319,8 @@ function startSpeechRecognition() {
     document.getElementById('transcriptBox').textContent = transcript + interim || 'Start speaking...'
     document.getElementById('transcriptBox').scrollTop = 999999
   }
-  recognition.start()
+  recognition.onend = () => { if (sessionActive) try { recognition.start() } catch(e) {} }
+  try { recognition.start() } catch(e) { console.log(e) }
 }
 
 function stopSession() {
