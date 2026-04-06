@@ -305,6 +305,7 @@ function updateEmotions(expressions) {
 }
 
 function startSpeechRecognition() {
+  console.log('speech supported:', 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window)
   if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) return
   const SR  = window.SpeechRecognition || window.webkitSpeechRecognition
   recognition = new SR()
